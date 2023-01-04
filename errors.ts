@@ -29,7 +29,7 @@ function catchErrorDemoSwallow() {
     mergeMap(booksResponse => booksResponse.books),
     filter(book => book.year < 1950),
     tap(oldBook => console.log(`Title: ${oldBook.title}`)),
-    catchError(err => of({ title: 'We act like its fine', year: 2022 }))
+    catchError(err => of({ title: 'We act like its fine', year: 2023 }))
   ).subscribe({
     next: value => console.log(value.title),
     error: error => console.log(`ERROR: ${error}`),
@@ -37,12 +37,21 @@ function catchErrorDemoSwallow() {
   });
 }
 
+
 function catchErrorDemoRetry() {
+  let numRetries = 0;
+
   getBookResponseFailure().pipe(
     mergeMap(booksResponse => booksResponse.books),
     filter(book => book.year < 1950),
     tap(oldBook => console.log(`Title: ${oldBook.title}`)),
-    catchError((err, caught) => caught)
+    catchError((err, caught) => {
+      if (numRetries++ < 3) {
+        console.log('Retrying...')
+        return caught;
+      }
+      throw err;
+    })
   ).subscribe({
     next: value => console.log(value.title),
     error: error => console.log(`ERROR: ${error}`),

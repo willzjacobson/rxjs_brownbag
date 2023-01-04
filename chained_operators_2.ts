@@ -9,7 +9,7 @@ const booksAjaxResponse$ = of({
   }, {
     year: 1942, title: 'The wars we fight',
   }, {
-    year: 1951, title: 'The fridges we buy',
+    year: 1951, title: 'The appliances we buy',
   }, {
     year: 2020, title: 'The ills we catch',
   }]
@@ -18,7 +18,8 @@ const booksAjaxResponse$ = of({
 booksAjaxResponse$.pipe(
   mergeMap(booksResponse => booksResponse.books),
   filter(book => book.year < 1950),
-  tap(oldBook => console.log(`Title: ${oldBook.title}`)),
-).subscribe(
-  finalValue => console.log(finalValue)
-);
+  // tap(oldBook => console.log(`Title: ${oldBook.title}`)),
+).subscribe({
+  next: value => console.log(value),
+  complete: () => console.log('Complete!'),
+});

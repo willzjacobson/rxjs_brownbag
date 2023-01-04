@@ -29,7 +29,7 @@ function resolvedPromiseDemo() {
 
 // Rejected Promise
 function rejectedPromiseDemo() {
-  const rejectedPromise = Promise.reject('Error!');
+  const rejectedPromise = Promise.reject('Dang!');
 
   const rejectedPromiseObservable$ = from(rejectedPromise);
 

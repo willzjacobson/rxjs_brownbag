@@ -40,25 +40,35 @@ export async function batchAsyncActions<TIn, TOut>(
 // -=-=-=- Tests
 
 async function testSuccess(numMaxConcurrentCalls: number) {
-  const dataIn = [0, 1, 2, 3, 4]
-  const cb = async (n: number) => Promise.resolve(n + 1);
+  const dataIn = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const cb = async (n: number) => new Promise((res, rej) => {
+    setTimeout(() => {
+      const toReturn = n + 1;
+      console.log('returning:', toReturn);
+      return res(toReturn);
+    }, 1000)
+  })
 
   const out = await batchAsyncActions(dataIn, cb, numMaxConcurrentCalls)
 
-  console.log("out:", out)
+  console.log("Result:", out)
 };
 
 async function testFailure() {
-  const dataIn = [0, 1, 2, 3, 4]
+  const dataIn = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const errMsg = 'Dang';
   const cb = async () => Promise.reject(new Error(errMsg));
 
   try {
     await batchAsyncActions(dataIn, cb, 5)
   } catch (err) {
-    console.log((err as Error).message);
+    console.log('Error:', (err as Error).message);
   }
 };
 
-testSuccess(2);
+testSuccess(1);
+// testSuccess(2);
+// testSuccess(5);
+// testSuccess(10);
+
 // testFailure();

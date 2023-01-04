@@ -3,7 +3,7 @@ import { filter, map } from "rxjs/operators";
 
 const nums$ = from([-2, -1, 0, 1, 2]);
 
-const observer1 = {
+const observer = {
   next: (v: number) => console.log('val:', v),
   error: (err: any) => console.log('err:', err),
   complete: () => console.log('Complete!'),
@@ -12,4 +12,4 @@ const observer1 = {
 nums$.pipe(
   filter(n => n > 0),
   map(positiveNum => positiveNum * 3),
-).subscribe(observer1);
+).subscribe(observer);
