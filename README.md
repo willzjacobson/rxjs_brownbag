@@ -32,7 +32,7 @@ To gain a foundation in RxJS Observables, I recommend doing the following (in or
 ## What is RxJS?
 The JavaScript implementation of the [Reactive Extensions API](https://reactivex.io): "an API for asynchronous programming with observable streams". 
 
-"Obervable streams" refer to streams designed to follow the [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern). RxJS provides an API that leverages both the observable pattern (for example, a `next` callback) and the iterator pattern (for example, methods mirroring those on the Array prototype).
+"Obervable streams" refer to streams designed to follow the [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern). RxJS provides an API that leverages both the observer pattern (for example, a `next` callback) and the iterator pattern (for example, methods mirroring those on the Array prototype).
 
 Useful for controlling the reactive flow of data into your application. For example: 
  - A response returned from an AJAX call  
