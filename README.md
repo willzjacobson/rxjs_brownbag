@@ -44,7 +44,7 @@ Written in TypeScript, so there's no need to install any additional typings pack
 Some big players rely heavily on RxJS (Angular, for example).
 
 ## Problems RxJS helps us solve
-In JavaScript, there are severasl common ways to handle incoming data. Which one you use will depend on the situation:
+In JavaScript, there are several common ways to handle incoming data. Which one you use will depend on the situation:
  - callback functions
  - promises
  - event handlers
