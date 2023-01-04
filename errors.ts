@@ -24,6 +24,9 @@ function callbackDemo() {
   });
 }
 
+callbackDemo();
+
+
 function catchErrorDemoSwallow() {
   getBookResponseFailure().pipe(
     mergeMap(booksResponse => booksResponse.books),
@@ -36,6 +39,8 @@ function catchErrorDemoSwallow() {
     complete: () => console.log('Complete!'),
   });
 }
+
+// catchErrorDemoSwallow();
 
 
 function catchErrorDemoRetry() {
@@ -59,6 +64,9 @@ function catchErrorDemoRetry() {
   });
 }
 
+// catchErrorDemoRetry();
+
+
 function catchErrorDemoModifyError() {
   getBookResponseFailure().pipe(
     mergeMap(booksResponse => booksResponse.books),
@@ -72,7 +80,4 @@ function catchErrorDemoModifyError() {
   });
 }
 
-callbackDemo();
-// catchErrorDemoSwallow();
-// catchErrorDemoRetry();
 // catchErrorDemoModifyError()

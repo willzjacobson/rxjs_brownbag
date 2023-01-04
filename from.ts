@@ -12,6 +12,9 @@ function arrayDemo() {
   });
 }
 
+arrayDemo();
+
+
 // -=-=- Convert Promises to observables
 
 // Resolved Promise
@@ -27,6 +30,9 @@ function resolvedPromiseDemo() {
   });
 }
 
+// resolvedPromiseDemo();
+
+
 // Rejected Promise
 function rejectedPromiseDemo() {
   const rejectedPromise = Promise.reject('Dang!');
@@ -40,6 +46,4 @@ function rejectedPromiseDemo() {
   });
 }
 
-arrayDemo();
-// resolvedPromiseDemo();
 // rejectedPromiseDemo();
